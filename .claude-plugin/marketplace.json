@@ -1,0 +1,18 @@
+{
+  "name": "claude-code-teams",
+  "owner": { "name": "Muhammad Asim" },
+  "plugins": [
+    {
+      "name": "claude-code-teams",
+      "source": "./plugins/claude-code-teams",
+      "description": "Multi-agent feature-delivery pipeline for Claude Code (60 agents, 239 skills, team wizard, coverage gates).",
+      "category": "development"
+    },
+    {
+      "name": "figma",
+      "source": { "source": "github", "repo": "figma/mcp-server-guide" },
+      "description": "Figma's official plugin — Figma MCP server plus 12 first-party skills (figma-use, figma-generate-design, figma-code-connect, figma-implement-motion, FigJam, Slides). Install alongside claude-code-teams for design-to-code work; claude-code-teams's figma-to-ui command defers to these skills when present.",
+      "category": "development"
+    }
+  ]
+}

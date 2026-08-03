@@ -1,0 +1,7 @@
+{
+  "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" },
+  "extraKnownMarketplaces": {
+    "claude-code-teams": { "source": { "source": "github", "repo": "iammuhammadasimofficial/claude-code-teams" } }
+  },
+  "enabledPlugins": { "claude-code-teams@claude-code-teams": true }
+}
