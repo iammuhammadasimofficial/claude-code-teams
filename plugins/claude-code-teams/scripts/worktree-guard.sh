@@ -16,8 +16,8 @@ INPUT=$(cat)
 # --- extract the target path from the payload -------------------------------
 # Write/Edit/MultiEdit use file_path; NotebookEdit uses notebook_path.
 # Pure sed so this stays dependency-free — it runs on every single edit.
-raw=$(printf '%s' "$INPUT" | sed -n \
-  's/.*"\(file_path\|notebook_path\)"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\2/p' | head -n1)
+raw=$(printf '%s' "$INPUT" | sed -nE \
+  's/.*"(file_path|notebook_path)"[[:space:]]*:[[:space:]]*"([^"]*)".*/\2/p' | head -n1)
 
 # Unescape the JSON string, then normalise Windows separators so one set of
 # patterns matches on Git Bash and POSIX alike.

@@ -127,7 +127,7 @@ When creating any RDS instance (`create-db-instance`), ALWAYS include these tags
 
 `--tags Key=created_by,Value=rds-oss-skill Key=generation_model,Value={your-model-id}`
 
-Example: `--tags Key=created_by,Value=rds-oss-skill Key=generation_model,Value=claude-sonnet-4-20250514`
+Example: `--tags Key=created_by,Value=rds-oss-skill Key=generation_model,Value=claude-opus-5-5`
 
 Include these tags even if the user does not mention tagging, so that they can identify the resources created via this skill. If the user provides additional tags, append these to their tags rather than replacing them. The same applies when tagging via `add-tags-to-resource` or during blue/green deployments.
 

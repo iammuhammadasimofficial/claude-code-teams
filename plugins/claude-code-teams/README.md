@@ -181,13 +181,14 @@ Type these in Claude Code. Run any command **bare** (no args) for a guided wizar
 | `/claude-code-teams:agent-team-orc` | Team wizard — create / list / show / rename / delete a team for this project |
 | `/claude-code-teams:orchestrate-feature team <name>: <feature + docs>` | Full **autonomous** pipeline: BA/legacy → plan → parallel build → test wave (90%/100% coverage + Playwright) → QA/security/perf reviews → PR → cleanup. Only stops for genuine business decisions and the final merge |
 | `/claude-code-teams:review-pr team <name>: <pr#> [module]` | Multi-agent PR review with KB parity; consolidated BLOCKER/MAJOR/MINOR verdict |
+| `/claude-code-teams:pr-review-fix team <name>: <pr#> [module]` | Review a PR AND fix it until it's ready to merge: collects bot comments, unresolved human comments, failing checks and conflicts, fixes only inside the PR's own files, asks about anything business-related or ambiguous, shows fixes before pushing, re-checks, approves (or comments "ready to merge" on your own PR) and asks you to merge. Never merges |
 | `/claude-code-teams:figma-to-ui <figma-url>` | Figma design → implemented UI. Pulls design context/tokens via the Figma MCP, maps them onto the project's **existing** design system, implements per framework, then verifies with Playwright screenshots against the design and reports deliberate deviations |
 | `/claude-code-teams:axiom-triage [dataset] [window]` | Pulls real production errors from an Axiom dataset, groups them by normalised signature, ranks by user impact and regression-since-deploy, root-causes each group, and fixes with a failing regression test first |
 | `/claude-code-teams:kb [module]` | Build the full product knowledge base and its browsable `/kb` viewer, in the project's **own stack** (not a separate docs site). Bare = full build; with a module name = add or refresh just that module. Sources from `knowledge-base/`, FRDs and the code; writes Markdown to `.claude/knowledgebase/`; new pages appear with no code change. `/kb` is **absent in production**, open elsewhere |
 | `/claude-code-teams:status` | Running teams/agents + task progress (read-only, terminal) |
 | `/claude-code-teams:help` | Full command/skill/script/hook reference |
 
-### Skills (239 — model-invoked; force one with `/claude-code-teams:<skill>`)
+### Skills (240 — model-invoked; force one with `/claude-code-teams:<skill>`)
 The lead auto-loads whichever skills fit the task. All skill content is **vendored verbatim from upstream sources** (see [Skill provenance](#skill-provenance)) — none of it is hand-written.
 
 | Area | Skills |
@@ -293,7 +294,7 @@ The lead spawns only what the feature needs — **3–5 active teammates max**. 
 
 ### Model and effort tiering
 
-Tiered to hold weekly Opus usage down without dropping quality. **Opus is 5 of 60 agents** — reserved for work where a wrong judgement is expensive and the volume is low. Everything that scales with feature size runs Sonnet. Plumbing runs Haiku.
+Tiered to hold weekly Opus usage down without dropping quality. **Opus is 5 of 60 agents** — reserved for work where a wrong judgement is expensive and the volume is low. Everything that scales with feature size runs Sonnet. Plumbing runs Haiku. Agent frontmatter uses the `opus` / `sonnet` / `haiku` aliases, which Claude Code resolves to the latest model in each family (currently **Opus 5.5**, **Sonnet 5.5** and **Haiku 4.5**), so new releases are picked up without editing agents. **Opus 5.5 is the ceiling: no agent runs on Fable**, and `inherit` is not allowed (it would pick up the session model, which may be Fable).
 
 | Tier | Count | Agents |
 |---|---|---|

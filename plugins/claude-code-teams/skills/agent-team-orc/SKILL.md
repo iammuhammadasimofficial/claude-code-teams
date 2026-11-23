@@ -47,7 +47,7 @@ Ask exactly two questions before touching the filesystem — both via AskUserQue
 
 **Automatic mode:** read ONLY these, in this order, stopping as soon as you have enough signal: `.claude/teams/*.json` (existing teams), `CLAUDE.md`, `README.md`, `package.json`/`composer.json`. Do NOT crawl source folders. Present a 2–3 line project summary, then the recommended roster as a MULTI-SELECT AskUserQuestion with the recommendations pre-selected and reasons in the descriptions ("Laravel legacy referenced → legacy-analyst"); user confirms or adjusts the selection.
 
-Both modes: optionally set default teammate model (default sonnet) and max parallel (default 5).
+Both modes: optionally set default teammate model (`sonnet` (default), `opus` or `haiku`; never Fable, Opus 5.5 is the ceiling) and max parallel (default 5).
 
 ## Phase 3 — Save the template
 Write `$TEAMS_DIR/<team-name>.json` (multiple teams per project are expected — e.g. a build team and a review team):
@@ -65,6 +65,6 @@ Also: create `plans/{upcoming,in-progress,done}/` and `knowledge-base/` if missi
 
 ## Phase 4 — Tell the user how to work from now on
 
-Explain, briefly: "Team '<name>' is saved. Use it by naming it in your prompt: `/claude-code-teams:orchestrate-feature team <name>: <feature + doc/link>` or `/claude-code-teams:review-pr team <name>: <pr>`. If the project has only one team, naming it is optional. Re-run /agent-team-orc anytime to add another team or change a roster."
+Explain, briefly: "Team '<name>' is saved. Use it by naming it in your prompt: `/claude-code-teams:orchestrate-feature team <name>: <feature + doc/link>` or `/claude-code-teams:review-pr team <name>: <pr>` (or `pr-review-fix` to also fix it until it's mergeable). If the project has only one team, naming it is optional. Re-run /agent-team-orc anytime to add another team or change a roster."
 
 Rules: never spawn teammates from this wizard; never overwrite an existing team file without showing a diff and confirming; keep the wizard to 2 questions in manual mode (name, roster) plus the optional description, ~4 in automatic mode.

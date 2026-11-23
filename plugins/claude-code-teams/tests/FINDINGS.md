@@ -46,7 +46,7 @@ untracked/tracked file, so `remove` succeeds on a clean worktree with no `--forc
 ## Verified good (no change needed)
 
 - All `skills/*/SKILL.md` and `agents/*.md` frontmatter is valid; agent models are
-  restricted to sonnet/opus/haiku/inherit; every `${CLAUDE_PLUGIN_ROOT}` path
+  restricted to sonnet/opus/haiku (no fable/inherit); every `${CLAUDE_PLUGIN_ROOT}` path
   referenced by a skill exists.
 - Team lifecycle file ops (create/list/show/rename/delete) are repo-isolated: a
   delete in one repo never touches another, and rename preserves content.

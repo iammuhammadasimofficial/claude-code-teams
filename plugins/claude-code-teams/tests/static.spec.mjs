@@ -79,7 +79,9 @@ test('every ${CLAUDE_PLUGIN_ROOT} path referenced in a SKILL.md exists', () => {
 // ----------------------------------------------------------------- agents
 test('every agents/*.md has valid frontmatter and a legal model', () => {
   const agentsDir = path.join(ROOT, 'agents');
-  const allowedModels = new Set(['sonnet', 'opus', 'haiku', 'inherit']);
+  // No 'inherit': an inheriting agent would run on the session model, which may be Fable.
+  // Opus (5.5) is the ceiling for every agent.
+  const allowedModels = new Set(['sonnet', 'opus', 'haiku']);
   const files = fs.readdirSync(agentsDir).filter((f) => f.endsWith('.md'));
   assert.ok(files.length >= 10, 'expected the full agent roster');
   for (const f of files) {
@@ -88,7 +90,7 @@ test('every agents/*.md has valid frontmatter and a legal model', () => {
     assert.ok(fm.name && fm.name.length, `${f} must have a name`);
     assert.ok(fm.description && fm.description.length, `${f} must have a description`);
     if (fm.model !== undefined) {
-      assert.ok(allowedModels.has(fm.model), `${f} model '${fm.model}' must be one of sonnet/opus/haiku/inherit`);
+      assert.ok(allowedModels.has(fm.model), `${f} model '${fm.model}' must be one of sonnet/opus/haiku (never fable or inherit)`);
     }
   }
 });
@@ -240,4 +242,17 @@ test('.mcp.json declares the servers the commands depend on', () => {
     const text = fs.readFileSync(path.join(ROOT, 'skills', skill, 'SKILL.md'), 'utf8');
     assert.match(text, new RegExp(`${server} MCP`), `${skill} must state its ${server} MCP requirement`);
   }
+});
+
+test('pr-review-fix never merges and stays inside the PR scope', () => {
+  const text = fs.readFileSync(path.join(ROOT, 'skills', 'pr-review-fix', 'SKILL.md'), 'utf8');
+  // The merge is always the developer's: the skill may only mention merge
+  // commands in order to forbid them.
+  assert.match(text, /Never merge/, 'pr-review-fix must state it never merges');
+  for (const line of text.split('\n').filter((l) => /gh pr merge|--auto\b/.test(l))) {
+    assert.match(line, /[Nn]ever/, `pr-review-fix may only mention merging to forbid it: ${line.trim()}`);
+  }
+  assert.doesNotMatch(text, /push\s+--force(?!-)|push -f\b/, 'pr-review-fix must never force-push');
+  assert.match(text, /scope allowlist/, 'pr-review-fix must fence fixes to the PR scope');
+  assert.match(text, /AskUserQuestion/, 'pr-review-fix must ask instead of assuming');
 });

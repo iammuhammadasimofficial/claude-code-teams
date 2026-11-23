@@ -17,6 +17,7 @@ Print this reference (compact, adapt to what they asked):
 | `/claude-code-teams:agent-team-orc rename <old> <new>` | Rename a team |
 | `/claude-code-teams:orchestrate-feature team <name>: <feature + docs>` | Full pipeline: KB → plan (gated) → parallel build → test wave (90%/100% coverage + Playwright) → reviews → PR → human gate → cleanup |
 | `/claude-code-teams:review-pr team <name>: <pr#> [module]` | Multi-agent PR review with KB parity check; consolidated BLOCKER/MAJOR/MINOR verdict |
+| `/claude-code-teams:pr-review-fix team <name>: <pr#> [module]` | Review a PR AND fix it until it's ready to merge: collects bot comments, unresolved human comments, failing checks and conflicts, fixes only inside the PR's own files, asks about anything business-related or ambiguous, shows fixes before pushing, re-checks, approves (or comments "ready to merge" on your own PR) and asks you to merge. Never merges |
 | `/claude-code-teams:figma-to-ui <figma-url>` | Figma design → implemented UI: pulls design context via Figma MCP, maps it onto the existing design system, implements, verifies with screenshots |
 | `/claude-code-teams:axiom-triage [dataset] [window]` | Pulls real production errors from an Axiom dataset, groups/ranks by impact, root-causes them, fixes with regression tests |
 | `/claude-code-teams:kb [module]` | Build the product KB + the browsable `/kb` viewer in the project's own stack. Bare = full KB; with a module = add/refresh that module. Auto-updates when KB files change |
@@ -40,7 +41,7 @@ Run any command BARE (no arguments) to get a guided wizard — team, feature/PR,
 
 Model tiering: Opus only for the 5 judgment-critical agents (planner, qa-reviewer, security-reviewer, architect-review, incident-responder); everything else Sonnet, with Haiku for plumbing. Route commits/pushes/tracker updates to git-ops/clickup-ops.
 
-## Skills (239 — model-invoked automatically; force one with /claude-code-teams:<skill>)
+## Skills (240 — model-invoked automatically; force one with /claude-code-teams:<skill>)
 - **Process**: kb-builder, product-kb, plan-lifecycle, git-worktree-discipline, clickup-workflows, frd-builder, to-spec, to-tickets, commit, pr-writer.
 - **Next.js / React**: react-best-practices, nextjs-app-router-patterns, nextjs-typescript, next-dev-loop, next-cache-components-optimizer, react-state-management, tailwind-design-system, composition-patterns.
 - **Angular (12)**: angular-developer, angular-signals, angular-component, angular-forms, angular-routing, angular-http, angular-di, angular-directives, angular-ssr, angular-testing, angular-tooling, angular-new-app.
