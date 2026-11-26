@@ -170,7 +170,9 @@ test('hooks.json + plugin manifests: valid JSON, referenced scripts exist and ar
   }
   assert.ok(commands.length >= 2, 'expected several hook commands');
   for (const cmd of commands) {
-    const rel = cmd.replace('${CLAUDE_PLUGIN_ROOT}', '').replace(/^[/\\]/, '');
+    // Hook commands quote the placeholder so install paths with spaces keep working.
+    assert.match(cmd, /^"\$\{CLAUDE_PLUGIN_ROOT\}\/[^"]+"$/, `hook command must quote the plugin root: ${cmd}`);
+    const rel = cmd.replace(/"/g, '').replace('${CLAUDE_PLUGIN_ROOT}', '').replace(/^[/\\]/, '');
     const abs = path.join(ROOT, rel);
     assert.ok(fs.existsSync(abs), `hook script must exist: ${cmd}`);
     const first = fs.readFileSync(abs, 'utf8').split('\n')[0];

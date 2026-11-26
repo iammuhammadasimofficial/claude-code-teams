@@ -324,3 +324,13 @@ Licenses are **mixed** and attributed per file — check the frontmatter before 
 One caveat worth knowing: **`vercel-labs/agent-skills` ships no `LICENSE` file** — MIT is asserted only in its README and in some of its skills' own frontmatter. We record those as MIT on that basis (`vercel-optimize`, `web-design-guidelines`, `react-best-practices`, `composition-patterns`, `nextjs-typescript`). Every other source has a real LICENSE file, verified at vendoring time.
 
 Re-syncing a skill means re-copying from upstream and updating the synced date — review the upstream diff first. The test suite enforces that every vendored skill keeps a `license:` field and a `Vendored from … — synced <date>` comment, so attribution can't silently rot.
+
+## Works well with
+
+These are separate projects you can install next to this plugin. They are linked, not bundled:
+
+- [anthropics/skills](https://github.com/anthropics/skills): Anthropic's skill collection (documents, skill authoring, MCP building and more).
+- [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official): official plugins for plugin development, code review and security guidance.
+- [google-chat-mcp-local](https://www.npmjs.com/package/google-chat-mcp-local): a local Google Chat MCP server by the same author.
+
+Run `claude plugin validate` on any plugin you edit, and `claude plugin eval` to test skills.

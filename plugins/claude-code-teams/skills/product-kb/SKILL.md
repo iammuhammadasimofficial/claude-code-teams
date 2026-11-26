@@ -36,5 +36,5 @@ Any question to the developer uses AskUserQuestion with options + "Other" — e.
   "shots": [ { "route": "/hotels", "out": "hotels/search.png", "fullPage": true },
              { "route": "/booking/checkout", "out": "hotels/checkout.png", "viewport": {"width": 390, "height": 844} } ] }
 ```
-2. Run against the worktree's dev server: `node ${CLAUDE_PLUGIN_ROOT}/scripts/kb-screenshots.mjs` (base URL defaults to `http://localhost:$(cat .worktree-port)`; pass a URL to override). Requires playwright in the repo; `auth` is an optional Playwright storageState for logged-in pages (produce it with the e2e setup).
+2. Run against the worktree's dev server: `node "${CLAUDE_PLUGIN_ROOT}/scripts/kb-screenshots.mjs"` (base URL defaults to `http://localhost:$(cat .worktree-port)`; pass a URL to override). Requires playwright in the repo; `auth` is an optional Playwright storageState for logged-in pages (produce it with the e2e setup).
 3. Regenerate only the affected module's shots in MAINTAIN mode; commit images with the pages that reference them.

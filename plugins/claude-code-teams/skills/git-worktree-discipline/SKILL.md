@@ -12,9 +12,9 @@ description: Branching and git-worktree rules for multi-team parallel work — w
 
 ## Commands (use the plugin script — it also allocates the dev port)
 ```bash
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/worktree.sh new <feature> [base-branch]   # create branch + worktree + port
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/worktree.sh list
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/worktree.sh remove <feature>              # after merge only
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/worktree.sh" new <feature> [base-branch]   # create branch + worktree + port
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/worktree.sh" list
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/worktree.sh" remove <feature>              # after merge only
 ```
 If launched from Vibe Kanban or Claude Squad the worktree already exists — do NOT create another; just allocate a port if `.worktree-port` is missing (`worktree.sh port`).
 

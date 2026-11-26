@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/worktree-guard.sh"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/worktree-guard.sh\""
           }
         ]
       }
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/kb-sync.sh"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/kb-sync.sh\""
           }
         ]
       }
@@ -27,7 +27,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/task-gate.sh"
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/task-gate.sh\""
           }
         ]
       }

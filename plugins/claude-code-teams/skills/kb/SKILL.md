@@ -64,7 +64,7 @@ Never leave a placeholder page. A missing page is better than a page that lies.
 ## Phase 3 — Generate the nav manifest
 
 ```bash
-node ${CLAUDE_PLUGIN_ROOT}/scripts/kb-index.mjs
+node "${CLAUDE_PLUGIN_ROOT}/scripts/kb-index.mjs"
 ```
 
 Writes `.claude/knowledgebase/nav.json` — sections, pages, titles, URLs. Deterministic, so it is safe to re-run and to diff in CI. `--check` exits 1 when stale (use it in CI). The viewer reads this file, so nav is data, not code.
@@ -109,7 +109,7 @@ This is deliberate: the KB carries pricing, commission and discount rules. Gatin
 Maintain `.claude/knowledgebase/screenshots.json` and run:
 
 ```bash
-node ${CLAUDE_PLUGIN_ROOT}/scripts/kb-screenshots.mjs
+node "${CLAUDE_PLUGIN_ROOT}/scripts/kb-screenshots.mjs"
 ```
 
 In MODULE/SYNC mode regenerate only the affected module's shots. Commit images with the pages that reference them.
