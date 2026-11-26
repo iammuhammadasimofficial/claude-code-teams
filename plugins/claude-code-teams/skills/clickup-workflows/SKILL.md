@@ -1,6 +1,6 @@
 ---
 name: clickup-workflows
-description: Conventions for working with ClickUp via the ClickUp MCP — pulling FRDs/requirements from tasks, creating implementation tasks, and updating statuses. Use whenever a ClickUp link or task ID is mentioned, or when the pipeline needs to read requirements from or write progress to ClickUp.
+description: ClickUp-specific conventions (for other trackers, or to stay tool-agnostic, use tracker-workflows). Working with ClickUp via the ClickUp MCP — pulling FRDs/requirements from tasks, creating implementation tasks, and updating statuses. Use whenever a ClickUp link or task ID is mentioned, or when the pipeline needs to read requirements from or write progress to ClickUp.
 ---
 
 # ClickUp Workflows

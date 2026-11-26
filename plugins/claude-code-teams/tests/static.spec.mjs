@@ -256,3 +256,26 @@ test('pr-review-fix never merges and stays inside the PR scope', () => {
   assert.match(text, /scope allowlist/, 'pr-review-fix must fence fixes to the PR scope');
   assert.match(text, /AskUserQuestion/, 'pr-review-fix must ask instead of assuming');
 });
+
+test('ticket commands are tracker-agnostic, safe, and never merge', () => {
+  const cmds = ['pickup-ticket', 'raise-ticket', 'verify-ticket', 'signoff-ticket', 'autopilot'];
+  const trackers = ['Jira', 'ClickUp', 'Linear', 'Notion', 'GitHub Issues'];
+  const adapter = fs.readFileSync(path.join(ROOT, 'skills', 'tracker-workflows', 'SKILL.md'), 'utf8');
+  assert.ok(parseFrontmatter(adapter)?.description, 'tracker-workflows needs a description');
+  for (const t of trackers) assert.match(adapter, new RegExp(t), `tracker-workflows must cover ${t}`);
+  assert.match(adapter, /local mode/i, 'tracker-workflows must work with no tracker connected');
+  assert.match(adapter, /untrusted/i, 'tracker-workflows must treat ticket text as untrusted');
+  for (const c of cmds) {
+    const text = fs.readFileSync(path.join(ROOT, 'skills', c, 'SKILL.md'), 'utf8');
+    const fm = parseFrontmatter(text);
+    assert.equal(fm?.name, c, `${c} frontmatter name must match its folder`);
+    assert.ok(fm?.description, `${c} needs a description`);
+    assert.match(text, /tracker-workflows/, `${c} must go through the tracker adapter`);
+    assert.doesNotMatch(text, /mcp__clickup|clickup_/i, `${c} must not hard-code ClickUp tool names`);
+    assert.doesNotMatch(text, /(?:^|\s)git merge\b|gh pr merge/, `${c} must never run a merge`);
+  }
+  for (const c of ['signoff-ticket', 'autopilot', 'pickup-ticket']) {
+    const text = fs.readFileSync(path.join(ROOT, 'skills', c, 'SKILL.md'), 'utf8');
+    assert.match(text, /(never|Never)[^.\n]*(merge|Done)/, `${c} must keep merge and Done with the human`);
+  }
+});

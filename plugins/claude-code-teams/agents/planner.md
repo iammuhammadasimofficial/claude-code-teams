@@ -1,6 +1,6 @@
 ---
 name: planner
-description: Converts a knowledge-base document (and/or a ClickUp FRD) into an implementation plan and task breakdown following the plans/{upcoming,in-progress,done} lifecycle. Use whenever a feature needs a plan, task breakdown, or migration roadmap.
+description: Converts a knowledge-base document (and/or a ticket or FRD from any tracker) into an implementation plan and task breakdown following the plans/{upcoming,in-progress,done} lifecycle. Use whenever a feature needs a plan, task breakdown, or migration roadmap.
 model: opus
 effort: high
 tools: Read, Grep, Glob, Write, Bash, Skill

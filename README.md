@@ -8,7 +8,7 @@ This repo is a **Claude Code marketplace**. It ships our own plugin, **`claude-c
 
 | Plugin | Source | What it is |
 |---|---|---|
-| `claude-code-teams` | [`plugins/claude-code-teams/`](plugins/claude-code-teams) (this repo) | Multi-agent feature-delivery pipeline for Claude Code (60 agents, 242 skills, hooks, coverage/PR gates). |
+| `claude-code-teams` | [`plugins/claude-code-teams/`](plugins/claude-code-teams) (this repo) | Multi-agent feature-delivery pipeline for Claude Code (60 agents, 248 skills, hooks, coverage/PR gates). |
 | `figma` | `figma/mcp-server-guide` (Figma, referenced not copied) | Figma's official plugin — Figma MCP server plus 12 first-party skills for design-to-code. Optional; install it if you do Figma work. |
 
 ## `claude-code-teams`
@@ -25,7 +25,7 @@ It drives a feature end-to-end: BA & legacy analysis → prototyping → plannin
 
 **Model tiering** — Opus is only 5 of 60 (`planner`, `qa-reviewer`, `security-reviewer`, `architect-review`, `incident-responder`); 43 run Sonnet/high, 8 Sonnet/medium, 1 Sonnet/low, and 3 Haiku/low. `git-ops` and `clickup-ops` exist so commits, pushes, branches, PR plumbing and ClickUp uploads run on Haiku instead of an expensive model.
 
-### Skills (242)
+### Skills (248)
 
 All skill content is **vendored verbatim from upstream sources** — none of it is hand-written, so upstream fixes can be re-synced. Grouped roughly by area:
 
@@ -70,7 +70,7 @@ claude-code-teams/
         ├── .claude-plugin/
         │   └── plugin.json  # plugin manifest
         ├── agents/          # 60 subagent definitions
-        ├── skills/          # 242 skills (vendored, license-attributed)
+        ├── skills/          # 248 skills (vendored, license-attributed)
         ├── hooks/hooks.json # lifecycle hooks
         ├── scripts/         # coverage/task gates, worktree helpers, team monitor
         ├── tests/           # plugin tests

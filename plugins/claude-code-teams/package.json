@@ -1,7 +1,7 @@
 {
   "name": "claude-code-teams",
-  "version": "0.20.0",
-  "description": "A Claude Code plugin (not a library — see README) for a multi-agent feature-delivery pipeline: BA/legacy analysis, prototyping, planning, parallel FE/BE/integrations implementation, QA/security/performance review, PR gate. 60 agents and 242 skills across Next.js/Vercel/Tailwind/MongoDB/Redis, Angular/Vue/Svelte/Astro, React Native/Expo/Flutter, PostgreSQL/MySQL/MariaDB, AWS/Azure/GCP, Terraform/Kubernetes, SEO and Axiom observability; Paymob, WebEngage, LiteAPI; legacy Laravel/Vue and Node/NestJS.",
+  "version": "0.21.0",
+  "description": "A Claude Code plugin (not a library — see README) for a multi-agent feature-delivery pipeline: BA/legacy analysis, prototyping, planning, parallel FE/BE/integrations implementation, QA/security/performance review, PR gate. 60 agents and 248 skills across Next.js/Vercel/Tailwind/MongoDB/Redis, Angular/Vue/Svelte/Astro, React Native/Expo/Flutter, PostgreSQL/MySQL/MariaDB, AWS/Azure/GCP, Terraform/Kubernetes, SEO and Axiom observability; Paymob, WebEngage, LiteAPI; legacy Laravel/Vue and Node/NestJS.",
   "license": "MIT",
   "author": {
     "name": "Muhammad Asim",

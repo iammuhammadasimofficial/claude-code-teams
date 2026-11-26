@@ -57,6 +57,7 @@ Model tiering: Opus only for the 5 judgment-critical agents (planner, qa-reviewe
 - **Legacy / backend**: laravel-* (5), php-best-practices, nestjs-best-practices, better-auth-* (4), architecture-patterns, api-design-principles, codebase-design, domain-modeling.
 - **Security**: security-audit, sast-configuration, gha-security-review, pci-compliance, threat-mitigation-mapping.
 - **Delivery**: release-readiness, user-stories.
+- **Tickets (any tracker)**: tracker-workflows, pickup-ticket, raise-ticket, verify-ticket, signoff-ticket, autopilot. Work with Jira, ClickUp, Linear, Notion, GitHub Issues or local files; no tracker is required.
 
 Full list: `ls` the plugin's `skills/` directory.
 

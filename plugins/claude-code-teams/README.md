@@ -188,7 +188,7 @@ Type these in Claude Code. Run any command **bare** (no args) for a guided wizar
 | `/claude-code-teams:status` | Running teams/agents + task progress (read-only, terminal) |
 | `/claude-code-teams:help` | Full command/skill/script/hook reference |
 
-### Skills (242 — model-invoked; force one with `/claude-code-teams:<skill>`)
+### Skills (248 — model-invoked; force one with `/claude-code-teams:<skill>`)
 The lead auto-loads whichever skills fit the task. All skill content is **vendored verbatim from upstream sources** (see [Skill provenance](#skill-provenance)) — none of it is hand-written.
 
 | Area | Skills |
@@ -209,6 +209,7 @@ The lead auto-loads whichever skills fit the task. All skill content is **vendor
 | Integrations | paymob-integration, webengage-integration, liteapi-integration |
 | Security | security-audit, sast-configuration, gha-security-review, pci-compliance, threat-mitigation-mapping |
 | Delivery | release-readiness, user-stories |
+| Tickets (any tracker) | tracker-workflows (Jira, ClickUp, Linear, Notion, GitHub Issues, local files), pickup-ticket, raise-ticket, verify-ticket, signoff-ticket, autopilot |
 | Process | kb-builder, product-kb, plan-lifecycle, writing-plans, executing-plans, to-spec, to-tickets, frd-builder, commit, pr-writer, clickup-workflows, git-worktree-discipline |
 
 Full list: `/claude-code-teams:help`, or `ls skills/`.
