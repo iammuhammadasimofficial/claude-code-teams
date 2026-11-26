@@ -5,7 +5,7 @@
     {
       "name": "claude-code-teams",
       "source": "./plugins/claude-code-teams",
-      "description": "Multi-agent feature-delivery pipeline for Claude Code (60 agents, 240 skills, team wizard, coverage gates).",
+      "description": "Multi-agent feature-delivery pipeline for Claude Code (60 agents, 242 skills, team wizard, coverage gates).",
       "category": "development"
     },
     {

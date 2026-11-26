@@ -161,7 +161,7 @@ chmod +x ~/claude-code-teams/plugins/claude-code-teams/scripts/*.sh
 With the terminal opened at the project root in bypass-permissions mode:
 
 ```
-/claude-code-teams:orchestrate-feature Policy Renewals module — legacy source ../blanka, FRD in ClickUp task ABC-123
+/claude-code-teams:orchestrate-feature Policy Renewals module — legacy source ../legacy-app, FRD in ClickUp task ABC-123
 ```
 
 Or just describe the feature in natural language; the lead follows the same pipeline and runs it hands-off to an open PR. The **final PR merge stays with you**; everything up to the open PR is automatic. Quality gates (≥90%/100% coverage, zero blockers, tests green) are enforced by looping, not by asking you.
@@ -188,7 +188,7 @@ Type these in Claude Code. Run any command **bare** (no args) for a guided wizar
 | `/claude-code-teams:status` | Running teams/agents + task progress (read-only, terminal) |
 | `/claude-code-teams:help` | Full command/skill/script/hook reference |
 
-### Skills (240 — model-invoked; force one with `/claude-code-teams:<skill>`)
+### Skills (242 — model-invoked; force one with `/claude-code-teams:<skill>`)
 The lead auto-loads whichever skills fit the task. All skill content is **vendored verbatim from upstream sources** (see [Skill provenance](#skill-provenance)) — none of it is hand-written.
 
 | Area | Skills |
@@ -208,6 +208,7 @@ The lead auto-loads whichever skills fit the task. All skill content is **vendor
 | Legacy / backend | laravel-* (5), php-best-practices, nestjs-best-practices, better-auth-* (4), architecture-patterns, api-design-principles, codebase-design, domain-modeling |
 | Integrations | paymob-integration, webengage-integration, liteapi-integration |
 | Security | security-audit, sast-configuration, gha-security-review, pci-compliance, threat-mitigation-mapping |
+| Delivery | release-readiness, user-stories |
 | Process | kb-builder, product-kb, plan-lifecycle, writing-plans, executing-plans, to-spec, to-tickets, frd-builder, commit, pr-writer, clickup-workflows, git-worktree-discipline |
 
 Full list: `/claude-code-teams:help`, or `ls skills/`.

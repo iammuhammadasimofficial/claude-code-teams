@@ -5,7 +5,7 @@ description: Create or maintain the browsable product knowledge base under .clau
 
 # Product Knowledge Base (/kb)
 
-Target: `.claude/knowledgebase/` — browsable Markdown matching the HolidayMarket KB conventions so it renders in the `/kb` viewer with no viewer code changes.
+Target: `.claude/knowledgebase/` — browsable Markdown matching the standard KB conventions so it renders in the `/kb` viewer with no viewer code changes.
 
 ## Interaction rule
 Any question to the developer uses AskUserQuestion with options + "Other" — e.g. CREATE-mode source selection, or MAINTAIN-mode "these 4 pages look affected — update all?" (multi-select).

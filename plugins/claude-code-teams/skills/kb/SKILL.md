@@ -7,7 +7,7 @@ description: Build or extend the full product knowledge base and its browsable /
 
 You are the LEAD for a KB run. $ARGUMENTS may name a module (add/refresh just that one) or be empty (decide the mode below).
 
-Target shape — the same structure as `stage.holidaymarket.ae/kb` and `imcrm-2.vercel.app/kb`: a left sidebar of collapsible sections, one section per top-level folder, Title-Cased page names, Markdown content, screenshots at the bottom of each page.
+Target shape — a documentation viewer layout: a left sidebar of collapsible sections, one section per top-level folder, Title-Cased page names, Markdown content, screenshots at the bottom of each page.
 
 ## Two things this command owns
 

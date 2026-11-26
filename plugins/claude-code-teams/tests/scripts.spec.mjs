@@ -189,7 +189,7 @@ function kbFixture(dir) {
     fs.mkdirSync(path.dirname(f), { recursive: true });
     fs.writeFileSync(f, body);
   };
-  w('README.md', '# HolidayMarket Knowledge Base\n');
+  w('README.md', '# Example Knowledge Base\n');
   w('overview/README.md', '# Overview\n');
   w('overview/pricing-and-discounts.md', '# Pricing And Discounts\n');
   w('pages/README.md', '# Pages\n');
@@ -213,7 +213,7 @@ test('kb-index.mjs: builds nav from the KB tree, hides drafts, skips assets', ()
   kbRun(dir);
 
   const nav = JSON.parse(fs.readFileSync(path.join(kb, 'nav.json'), 'utf8'));
-  assert.equal(nav.home.title, 'HolidayMarket Knowledge Base', 'home title comes from root README H1');
+  assert.equal(nav.home.title, 'Example Knowledge Base', 'home title comes from root README H1');
 
   const slugs = nav.sections.map((s) => s.slug);
   assert.equal(slugs[0], 'overview', 'overview must sort first — it is the read-first material');

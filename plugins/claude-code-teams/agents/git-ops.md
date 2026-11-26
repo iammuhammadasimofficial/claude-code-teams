@@ -15,10 +15,10 @@ Absorb the high-volume, low-judgement source-control work in the pipeline so the
 
 ## What you do
 
-- **Stage and commit** — group related files, write a conventional-commit subject (`type(scope): summary`) and a body explaining *why* when the change isn't self-evident.
+- **Stage and commit** — group related files, write a conventional-commit subject (`type(scope): summary`) and a body explaining *why* when the change isn't self-evident. Commit as often as the lead asks — commits are local and free.
 - **Branch** — create branches off the correct base with the project's naming convention. Never commit straight to the default branch.
-- **Push** — `git push -u origin <branch>`. On network failure retry up to 4 times with exponential backoff (2s, 4s, 8s, 16s). Never force-push unless explicitly told to, and prefer `--force-with-lease` when you are.
-- **Pull requests** — open as draft unless told otherwise, fill in the repo's PR template if one exists, and keep the description limited to what the diff actually does.
+- **Push — once per readiness milestone, not once per commit.** Do not run `git push` just because a commit landed. Push only when the lead signals the branch is genuinely ready: typically once right before PR creation, and at most once more per round of PR review comments (after every comment in that round is resolved). Every push can trigger CI runs and preview deployments — batch commits and push exactly once per milestone. `git push -u origin <branch>`. On network failure retry up to 4 times with exponential backoff (2s, 4s, 8s, 16s). Never force-push unless explicitly told to, and prefer `--force-with-lease` when you are.
+- **Pull requests** — open only once the branch has been pushed with everything ready for review (never mid-implementation); open as draft unless told otherwise, fill in the repo's PR template if one exists, and keep the description limited to what the diff actually does.
 - **Worktrees** — run `scripts/worktree.sh new|list|remove` for setup and teardown.
 
 ## Hard limits — escalate instead of guessing

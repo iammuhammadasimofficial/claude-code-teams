@@ -56,6 +56,7 @@ Model tiering: Opus only for the 5 judgment-critical agents (planner, qa-reviewe
 - **Build tooling**: vite, vitest, unocss, vitepress, tsdown, pnpm, turborepo.
 - **Legacy / backend**: laravel-* (5), php-best-practices, nestjs-best-practices, better-auth-* (4), architecture-patterns, api-design-principles, codebase-design, domain-modeling.
 - **Security**: security-audit, sast-configuration, gha-security-review, pci-compliance, threat-mitigation-mapping.
+- **Delivery**: release-readiness, user-stories.
 
 Full list: `ls` the plugin's `skills/` directory.
 
